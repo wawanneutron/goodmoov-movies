@@ -10,13 +10,13 @@
       <div
         v-for="(slide, index) in sliderMovies"
         :key="index"
-        class="min-w-full flex-shrink-0"
+        class="w-full shrink-0"
       >
         <img
           :src="getImageUrl(slide.backdrop_path, 'w1280')"
           :alt="slide.title"
           :title="slide.title"
-          class="w-full h-48 md:h-96 object-cover object-top rounded-xl md:rounded-2xl"
+          class="w-full h-56 md:h-96 object-cover object-top rounded-xl md:rounded-2xl"
         />
       </div>
     </div>
