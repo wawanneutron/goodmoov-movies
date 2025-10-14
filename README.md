@@ -1,75 +1,77 @@
-# Nuxt Minimal Starter
+# GoodMoov Movies
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**GoodMoov Movies** adalah aplikasi web untuk melihat informasi film terbaru, populer, dan berdasarkan genre.  
+Aplikasi ini menggunakan data dari [The Movie Database (TMDB)](https://developer.themoviedb.org/) API dan dibangun dengan **Nuxt 3**, **Pinia**, dan **TailwindCSS**.
 
-## Setup
+---
 
-Make sure to install dependencies:
+## Tech Stack
+
+- **Nuxt 3** – Framework berbasis Vue 3
+- **Pinia** – State management
+- **TailwindCSS** – Styling
+- **TypeScript** – Secure
+- **TMDB API** – Sumber data film
+- **Netlify** – Deployment platform
+
+---
+
+## Fitur Utama
+
+✅ **Trending & Popular Movies** – Menampilkan film trending dan populer  
+✅ **Genre List** – List genre
+✅ **Movie Detail Page** – Detail film (poster, overview, cast, runtime, dll.)  
+✅ **Carousel Banner** – Slider otomatis didapat dari film popular setiap minggu  
+✅ **Skeleton Loading** – Loader saat memuat data  
+✅ **Load More Pagination** – Menampilkan lebih banyak film  
+✅ **Responsive Design** – Desain responsive untuk mobile & desktop
+
+---
+
+## Instalasi & Setup
+
+### Clone repository
 
 ```bash
-# npm
+git clone https://github.com/wawanneutron/goodmoov-movies.git
+cd goodmoov-movies
+```
+
+### Install dependencies
+
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
+# atau
 yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+### Buat file `.env`
 
-Start the development server on `http://localhost:3000`:
+Buat file `.env` di root project dan diisi dengan:
 
 ```bash
-# npm
+NUXT_PUBLIC_API_TOKEN=<YOUR_TMDB_API_TOKEN>
+NUXT_PUBLIC_BASE_API=https://api.themoviedb.org/3
+```
+
+> Pastikan sudah memiliki API TOKEN dari [TMDB](https://developer.themoviedb.org/).
+
+### Jalankan project secara lokal
+
+```bash
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Maka aplikasi akan berjalan di port:
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+```
+http://localhost:3000
 ```
 
-Locally preview production build:
+## Contact
 
-```bash
-# npm
-npm run preview
+- 📧 Email: hellowawansetiawan@gmail.com
+- 💬 WhatsApp: +62 877-3269-7337
+- 💼 LinkedIn: [linkedin.com/in/wawan-setiawan](https://www.linkedin.com/in/wawan-setiawan-84934a206/)
 
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
