@@ -1,5 +1,7 @@
 <template>
-  <section class="mt-8">
+  <MovieDetailSkeleton v-if="loading" />
+
+  <section v-else-if="movieDetail" class="mt-8 space-y-6">
     <button
       class="flex items-center justify-center bg-[var(--theme-primary)] text-[var(--theme-text)] w-12 h-12 rounded-full shadow-md hover:opacity-80 transition-opacity cursor-pointer"
       @click="$router.back()"
@@ -7,73 +9,65 @@
       <Icon name="ph:arrow-left-bold" size="24" />
     </button>
 
-    <div v-if="movieDetail" class="mt-8 space-y-6">
-      <!-- header image -->
-      <div class="flex gap-4 text-[var(--theme-text)]">
-        <img
-          :src="getImageUrl(movieDetail?.poster_path)"
-          :alt="movieDetail?.title"
-          :title="movieDetail?.title"
-          class="w-48 rounded mb-4"
-        />
+    <div class="flex gap-4 text-[var(--theme-text)]">
+      <img
+        :src="getImageUrl(movieDetail?.poster_path)"
+        :alt="movieDetail?.title"
+        :title="movieDetail?.title"
+        class="w-48 rounded mb-4"
+      />
 
-        <div class="space-y-2">
-          <p class="text-xl">{{ getYear(movieDetail.release_date) }}</p>
-          <h1 class="text-3xl font-semibold">{{ movieDetail.title }}</h1>
+      <div class="space-y-2">
+        <p class="text-xl">{{ getYear(movieDetail.release_date) }}</p>
+        <h1 class="text-3xl font-semibold">{{ movieDetail.title }}</h1>
 
-          <p class="text-lg">{{ genreList }}</p>
-          <p class="text-xs">{{ formatRuntime(movieDetail.runtime) }}</p>
-        </div>
+        <p class="text-lg">{{ genreList }}</p>
+        <p class="text-xs">{{ formatRuntime(movieDetail.runtime) }}</p>
       </div>
+    </div>
 
-      <!-- overview -->
-      <div>
-        <SectionTitle class="w-14" title="Overview" />
-        <p class="mt-2 text-[var(--theme-text)]">{{ movieDetail.overview }}</p>
-      </div>
+    <div>
+      <SectionTitle class="w-14" title="Overview" />
+      <p class="mt-2 text-[var(--theme-text)]">{{ movieDetail.overview }}</p>
+    </div>
 
-      <!-- casts -->
-      <div>
-        <SectionTitle class="w-8" title="Casts" />
-        <ScrollContainer>
-          <div class="flex space-x-4 overflow-x-auto py-4">
-            <div
-              v-for="cast in movieDetail.credits?.cast"
-              :key="cast.id"
-              class="w-24 flex-shrink-0"
-            >
-              <img
-                :src="getImageUrl(cast.profile_path)"
-                :alt="cast.name"
-                :title="cast.name"
-                class="w-24 h-32 object-cover rounded mb-2"
-              />
-              <p
-                class="text-[var(--theme-text)] text-sm font-semibold truncate"
-              >
-                {{ cast.name }}
-              </p>
-              <p class="text-[var(--theme-text)] text-xs opacity-70 truncate">
-                {{ cast.character }}
-              </p>
-            </div>
-          </div>
-        </ScrollContainer>
-      </div>
-
-      <!-- recommended -->
-      <div>
-        <SectionTitle class="w-20" title="Recommended" />
-        <ScrollContainer>
-          <div class="flex space-x-4 overflow-x-auto py-4">
-            <MovieCard
-              v-for="movie in movieDetail.recommendations.results"
-              :key="movie.id"
-              :movie="movie"
+    <div>
+      <SectionTitle class="w-8" title="Casts" />
+      <ScrollContainer>
+        <div class="flex space-x-4 overflow-x-auto py-4">
+          <div
+            v-for="cast in movieDetail.credits?.cast"
+            :key="cast.id"
+            class="w-24 flex-shrink-0"
+          >
+            <img
+              :src="getImageUrl(cast.profile_path)"
+              :alt="cast.name"
+              :title="cast.name"
+              class="w-24 h-32 object-cover rounded mb-2"
             />
+            <p class="text-[var(--theme-text)] text-sm font-semibold truncate">
+              {{ cast.name }}
+            </p>
+            <p class="text-[var(--theme-text)] text-xs opacity-70 truncate">
+              {{ cast.character }}
+            </p>
           </div>
-        </ScrollContainer>
-      </div>
+        </div>
+      </ScrollContainer>
+    </div>
+
+    <div>
+      <SectionTitle class="w-20" title="Recommended" />
+      <ScrollContainer>
+        <div class="flex space-x-4 overflow-x-auto py-4">
+          <MovieCard
+            v-for="movie in movieDetail.recommendations.results"
+            :key="movie.id"
+            :movie="movie"
+          />
+        </div>
+      </ScrollContainer>
     </div>
   </section>
 </template>
