@@ -1,7 +1,7 @@
 <template>
   <CarouselSkeleton v-if="loading" />
 
-  <div v-else class="relative overflow-hidden rounded-2xl mt-8">
+  <div v-else class="relative overflow-hidden rounded-xl md:rounded-2xl mt-8">
     <div
       ref="carouselRef"
       class="flex transition-transform duration-500 ease-in-out"
@@ -16,7 +16,7 @@
           :src="getImageUrl(slide.backdrop_path, 'w1280')"
           :alt="slide.title"
           :title="slide.title"
-          class="w-full h-56 md:h-96 object-cover object-top rounded-2xl"
+          class="w-full h-48 md:h-96 object-cover object-top rounded-xl md:rounded-2xl"
         />
       </div>
     </div>
