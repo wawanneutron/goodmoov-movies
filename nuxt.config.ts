@@ -8,8 +8,14 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  modules: ['@nuxt/fonts'],
+  modules: ['@pinia/nuxt', '@nuxt/fonts', 'nuxt-icon'],
   fonts: {
     families: [{ name: 'Poppins', provider: 'google' }]
+  },
+  runtimeConfig: {
+    public: {
+      API_KEY: process.env.API_TOKEN,
+      BASE_API: process.env.BASE_API
+    }
   }
 })
