@@ -5,22 +5,40 @@
 @theme {
   --color-primary: #f5f7fa;
   --color-secondary: #e4d4ff;
+  --color-secondary-light: #944ffa;
   --color-background: #ffffff;
+  --color-transparent: #ffffff80;
   --color-text: #1a1a1a;
+  --color-skleton-bg: rgba(255, 255, 255, 0.05);
 }
 
 @layer base {
   :root {
     --theme-primary: var(--color-primary);
     --theme-secondary: var(--color-secondary);
+    --theme-secondary-light: var(--color-secondary-light);
     --theme-background: var(--color-background);
+    --theme-transparent: var(--color-transparent);
     --theme-text: var(--color-text);
+    --theme-skeleton-bg: var(--color-skleton-bg);
   }
 
   .dark {
     --theme-primary: #21252b;
     --theme-secondary: #543b85;
+    --theme-secondary-light: #944ffa;
     --theme-background: #292e36;
+    --theme-transparent: #00000080;
     --theme-text: #ffffff;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
