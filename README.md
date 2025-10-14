@@ -3,6 +3,10 @@
 **GoodMoov Movies** adalah aplikasi web untuk melihat informasi film terbaru, populer, dan berdasarkan genre.  
 Aplikasi ini menggunakan data dari [The Movie Database (TMDB)](https://developer.themoviedb.org/) API dan dibangun dengan **Nuxt 3**, **Pinia**, dan **TailwindCSS**.
 
+## Live Demo
+
+[Deployment Link](https://goodmoov-movies.netlify.app)
+
 ---
 
 ## Tech Stack
