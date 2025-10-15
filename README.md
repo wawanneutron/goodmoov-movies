@@ -60,6 +60,16 @@ NUXT_PUBLIC_BASE_API=https://api.themoviedb.org/3
 
 > Pastikan sudah memiliki API TOKEN dari [TMDB](https://developer.themoviedb.org/).
 
+### Screenshot TMDB
+
+Login dan masuk ke dashboard TMDB
+
+<img width="700" height="605" alt="Image" src="https://github.com/user-attachments/assets/d4273f9c-9f8d-4e7d-8cc6-8d6c12d008be" />
+
+Lalu masuk ke menu setting API
+Setelah itu coppy API Read Access Token
+<img width="700" height="719" alt="Image" src="https://github.com/user-attachments/assets/13514f1b-690f-4aa7-b7c8-5fa620359d4d" />
+
 ### Jalankan project secara lokal
 
 ```bash
