@@ -111,3 +111,11 @@ export interface MovieDetail {
   credits?: Credits
   recommendations: recommendations
 }
+
+export interface ResponseGenres {
+  genres: Genre[]
+}
+
+export interface ResponseMovies {
+  results: Movie[]
+}

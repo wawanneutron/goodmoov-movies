@@ -1,11 +1,7 @@
 import { defineStore } from 'pinia'
-import type { Movie } from '@/types/movie'
+import type { Movie, ResponseMovies } from '@/types/movie'
 
 export const useMovieByGenreStore = defineStore('movieByGenre', () => {
-  const config = useRuntimeConfig()
-  const API_TOKEN = config.public.API_KEY
-  const BASE_URL = config.public.BASE_API
-
   const movies = ref<Movie[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
@@ -17,18 +13,9 @@ export const useMovieByGenreStore = defineStore('movieByGenre', () => {
     error.value = null
 
     try {
-      const res = await fetch(
-        `${BASE_URL}/discover/movie?with_genres=${genreId}&page=${page}`,
-        {
-          headers: {
-            Authorization: `Bearer ${API_TOKEN}`,
-            accept: 'application/json'
-          }
-        }
-      )
-      if (!res.ok) throw new Error('Failed to fetch movies')
-
-      const data = await res.json()
+      const data = await useTmdbAPI<ResponseMovies>('discover/movie', {
+        query: { with_genres: genreId, page }
+      })
 
       if (page === 1) {
         movies.value = data.results

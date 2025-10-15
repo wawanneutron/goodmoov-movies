@@ -1,11 +1,7 @@
+import type { MovieDetail } from '@/types/movie'
 import { defineStore } from 'pinia'
-import type { Movie, MovieDetail } from '@/types/movie'
 
 export const useMovieDetailStore = defineStore('detailMovie', () => {
-  const config = useRuntimeConfig()
-  const API_TOKEN = config.public.API_KEY
-  const BASE_URL = config.public.BASE_API
-
   const movieDetail = ref<MovieDetail>()
   const loading = ref(false)
   const error = ref<string | null>(null)
@@ -15,18 +11,10 @@ export const useMovieDetailStore = defineStore('detailMovie', () => {
     error.value = null
 
     try {
-      const res = await fetch(
-        `${BASE_URL}/movie/${movieId}?append_to_response=credits,recommendations`,
-        {
-          headers: {
-            Authorization: `Bearer ${API_TOKEN}`,
-            accept: 'application/json'
-          }
-        }
-      )
-      if (!res.ok) throw new Error('Failed to fetch  movie detail')
+      const data = await useTmdbAPI<MovieDetail>(`movie/${movieId}`, {
+        query: { append_to_response: 'credits,recommendations' }
+      })
 
-      const data = await res.json()
       movieDetail.value = data
     } catch (err: any) {
       error.value = err.message
