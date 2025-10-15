@@ -13,8 +13,8 @@ export default defineNuxtConfig({
     families: [{ name: 'Poppins', provider: 'google' }]
   },
   runtimeConfig: {
+    API_TOKEN: process.env.API_TOKEN,
     public: {
-      API_KEY: process.env.NUXT_PUBLIC_API_TOKEN,
       BASE_API: process.env.NUXT_PUBLIC_BASE_API
     }
   }
