@@ -22,13 +22,13 @@ Aplikasi ini menggunakan data dari [The Movie Database (TMDB)](https://developer
 
 ## Fitur Utama
 
-✅ **Trending & Popular Movies** – Menampilkan film trending dan populer  
-✅ **Genre List** – List genre
-✅ **Movie Detail Page** – Detail film (poster, overview, cast, runtime, dll.)  
-✅ **Carousel Banner** – Slider otomatis didapat dari film popular setiap minggu  
-✅ **Skeleton Loading** – Loader saat memuat data  
-✅ **Load More Pagination** – Menampilkan lebih banyak film  
-✅ **Responsive Design** – Desain responsive untuk mobile & desktop
+**Trending & Popular Movies** – Menampilkan film trending dan populer  
+**Genre List** – List genre
+**Movie Detail Page** – Detail film (poster, overview, cast, runtime, dll.)  
+**Carousel Banner** – Slider otomatis didapat dari film popular setiap minggu  
+**Skeleton Loading** – Loader saat memuat data  
+**Load More Pagination** – Menampilkan lebih banyak film  
+**Responsive Design** – Desain responsive untuk mobile & desktop
 
 ---
 
