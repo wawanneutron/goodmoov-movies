@@ -68,6 +68,7 @@ Login dan masuk ke dashboard TMDB
 
 Lalu masuk ke menu setting API
 Setelah itu coppy API Read Access Token
+
 <img width="700" height="719" alt="Image" src="https://github.com/user-attachments/assets/13514f1b-690f-4aa7-b7c8-5fa620359d4d" />
 
 ### Jalankan project secara lokal
@@ -76,11 +77,15 @@ Setelah itu coppy API Read Access Token
 npm run dev
 ```
 
-Maka aplikasi akan berjalan di port:
+Aplikasi akan berjalan di port:
 
 ```
 http://localhost:3000
 ```
+
+Jika berhasil akan menampilkan halaman dan data seperti ini:
+
+<img width="779" height="1002" alt="Image" src="https://github.com/user-attachments/assets/ee8b47f1-2ee8-4bad-a1ef-d96ca4ac2ab6" />
 
 ## Contact
 
