@@ -54,7 +54,7 @@ yarn install
 Buat file `.env` di root project dan diisi dengan:
 
 ```bash
-NUXT_PUBLIC_API_TOKEN=<YOUR_TMDB_API_TOKEN>
+API_TOKEN=<YOUR_TMDB_API_TOKEN>
 NUXT_PUBLIC_BASE_API=https://api.themoviedb.org/3
 ```
 
