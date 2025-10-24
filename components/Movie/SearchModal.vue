@@ -22,7 +22,7 @@
         <input
           v-model="searchQuery"
           type="text"
-          placeholder="Search movies or actors..."
+          placeholder="Search movies..."
           class="py-4 pl-12 pr-14 w-full bg-[var(--theme-primary)] text-[var(--theme-text)] rounded-full placeholder:text-[var(--theme-text)] focus:outline-none focus:ring-2 focus:ring-[var(--theme-secondary)] transition-all duration-200"
           @input="debounceSearch"
         />
