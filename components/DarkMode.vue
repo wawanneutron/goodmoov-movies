@@ -2,12 +2,12 @@
   <div>
     <button
       @click="toggleTheme"
-      class="p-2 bg-[var(--theme-primary)] text-[var(--theme-text)] rounded cursor-pointer"
+      class="flex items-center justify-center w-8 h-8 bg-[var(--theme-secondary)] text-[var(--theme-text)] rounded-full cursor-pointer"
       :title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
     >
       <Icon
         :name="isDark ? 'ph:sun-duotone' : 'ph:moon-duotone'"
-        size="24"
+        size="20"
         class="text-[var(--theme-text)]"
       />
     </button>
