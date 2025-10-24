@@ -27,12 +27,12 @@
     </div>
 
     <div>
-      <SectionTitle class="w-14" title="Overview" />
+      <SectionTitle width-line="w-14" title="Overview" />
       <p class="mt-2 text-[var(--theme-text)]">{{ movieDetail.overview }}</p>
     </div>
 
     <div>
-      <SectionTitle class="w-8" title="Casts" />
+      <SectionTitle width-line="w-8" title="Casts" />
       <ScrollContainer>
         <div class="flex space-x-4 overflow-x-auto py-4">
           <div
@@ -58,7 +58,7 @@
     </div>
 
     <div>
-      <SectionTitle class="w-20" title="Recommended" />
+      <SectionTitle width-line="w-20" title="Recommended" />
       <ScrollContainer>
         <div class="flex space-x-4 overflow-x-auto py-4">
           <MovieCard

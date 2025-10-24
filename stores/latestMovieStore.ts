@@ -1,5 +1,5 @@
+import type { Movie, Response } from '@/types/movie'
 import { defineStore } from 'pinia'
-import type { Movie, ResponseMovies } from '@/types/movie'
 
 export const useLatestMovieStore = defineStore('latestMovie', () => {
   const latestMovies = ref<Movie[]>([])
@@ -11,7 +11,7 @@ export const useLatestMovieStore = defineStore('latestMovie', () => {
     error.value = null
 
     try {
-      const data = await useTmdbAPI<ResponseMovies>('movie/now_playing')
+      const data = await useTmdbAPI<Response<Movie>>('movie/now_playing')
 
       latestMovies.value = data.results
     } catch (err: any) {

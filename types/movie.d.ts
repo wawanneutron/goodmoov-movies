@@ -116,9 +116,9 @@ export interface ResponseGenres {
   genres: Genre[]
 }
 
-export interface ResponseMovies {
+export interface Response<T> {
   page: number
   total_pages: number
   total_results: number
-  results: Movie[]
+  results: T[]
 }

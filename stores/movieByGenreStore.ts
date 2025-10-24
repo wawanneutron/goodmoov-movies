@@ -1,5 +1,5 @@
+import type { Movie, Response } from '@/types/movie'
 import { defineStore } from 'pinia'
-import type { Movie, ResponseMovies } from '@/types/movie'
 
 export const useMovieByGenreStore = defineStore('movieByGenre', () => {
   const movies = ref<Movie[]>([])
@@ -13,7 +13,7 @@ export const useMovieByGenreStore = defineStore('movieByGenre', () => {
     error.value = null
 
     try {
-      const data = await useTmdbAPI<ResponseMovies>('discover/movie', {
+      const data = await useTmdbAPI<Response<Movie>>('discover/movie', {
         query: { with_genres: genreId, page }
       })
 
