@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="`/movie/${movie.id}`"
-    class="block w-44 mt-2"
+    :class="`${widthCard} block mt-2`"
     @click="$emit('on:select-movie')"
   >
     <div class="overflow-hidden rounded relative">
@@ -9,7 +9,7 @@
         :src="getImageUrl(movie.poster_path)"
         :alt="movie.title"
         :title="movie.title"
-        class="w-44 h-auto rounded duration-300 ease-in-out hover:scale-110 transition-transform"
+        :class="`${widthCard} h-auto rounded duration-300 ease-in-out hover:scale-110 transition-transform`"
       />
       <span
         class="bg-[var(--theme-transparent)] text-[var(--theme-text)] text-sm absolute bottom-0 right-0 p-2"
@@ -32,7 +32,15 @@ defineEmits<{
   (e: 'on:select-movie'): void
 }>()
 
-defineProps<{ movie: Movie }>()
+withDefaults(
+  defineProps<{
+    movie: Movie
+    widthCard?: string
+  }>(),
+  {
+    widthCard: 'w-44'
+  }
+)
 </script>
 
 <style></style>

@@ -40,7 +40,7 @@
       <MovieGenreCardList @on:select-genre="onCloseModal" />
 
       <div
-        class="grid gap-8 sm:gap-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+        class="grid gap-2 sm:gap-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 overflow-x-auto"
       >
         <MovieCardSkeleton v-if="loading" v-for="n in 8" :key="n" />
         <MovieCard
@@ -48,6 +48,7 @@
           v-for="movie in searchMovie"
           :key="movie.id"
           :movie="movie"
+          width-card="w-36"
           @on:select-movie="onCloseModal"
         />
       </div>
@@ -86,4 +87,10 @@ const onOpenSearchModal = () => {
   searchMovie.value = []
   searchQuery.value = ''
 }
+
+watch(searchQuery, (newQuery) => {
+  if (!newQuery.trim()) {
+    searchMovie.value = []
+  }
+})
 </script>
