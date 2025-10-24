@@ -12,12 +12,14 @@
         :key="index"
         class="w-full shrink-0"
       >
-        <img
-          :src="getImageUrl(slide.backdrop_path, 'w1280')"
-          :alt="slide.title"
-          :title="slide.title"
-          class="w-full h-56 md:h-96 object-cover object-top rounded-xl md:rounded-2xl"
-        />
+        <nuxt-link :to="`/movie/${slide.id}`">
+          <img
+            :src="getImageUrl(slide.backdrop_path, 'w1280')"
+            :alt="slide.title"
+            :title="slide.title"
+            class="w-full h-56 md:h-96 object-cover object-top rounded-xl md:rounded-2xl cursor-pointer"
+          />
+        </nuxt-link>
       </div>
     </div>
 
