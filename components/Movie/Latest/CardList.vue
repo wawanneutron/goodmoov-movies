@@ -1,6 +1,6 @@
 <template>
   <section>
-    <SectionTitle class="w-8" title="Latest" />
+    <SectionTitle width-line="w-10" title="Latest" />
     <ScrollContainer>
       <MovieCardSkeleton
         v-if="loading"
@@ -19,6 +19,8 @@
 </template>
 
 <script lang="ts" setup>
+import SectionTitle from '~/components/SectionTitle.vue'
+
 const latestStore = useLatestMovieStore()
 const { fetchLatestMovies } = latestStore
 const { latestMovies, loading, error } = storeToRefs(latestStore)

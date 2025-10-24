@@ -1,6 +1,6 @@
 <template>
   <section>
-    <SectionTitle class="w-12" title="Popular" />
+    <SectionTitle width-line="w-12" title="Popular" />
     <ScrollContainer>
       <MovieCardSkeleton
         v-if="loading"
@@ -19,6 +19,8 @@
 </template>
 
 <script lang="ts" setup>
+import SectionTitle from '~/components/SectionTitle.vue'
+
 const popularStore = usePopularMovieStore()
 const { fetchPopularMovies } = popularStore
 const { popularMovies, loading, error } = storeToRefs(popularStore)
