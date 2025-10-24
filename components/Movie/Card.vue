@@ -1,5 +1,9 @@
 <template>
-  <nuxt-link :to="`/movie/${movie.id}`" class="block w-44 mt-2">
+  <nuxt-link
+    :to="`/movie/${movie.id}`"
+    class="block w-44 mt-2"
+    @click="$emit('on:select-movie')"
+  >
     <div class="overflow-hidden rounded relative">
       <img
         :src="getImageUrl(movie.poster_path)"
@@ -23,6 +27,10 @@
 
 <script lang="ts" setup>
 import type { Movie } from '~/types/movie'
+
+defineEmits<{
+  (e: 'on:select-movie'): void
+}>()
 
 defineProps<{ movie: Movie }>()
 </script>
