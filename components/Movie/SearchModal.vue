@@ -46,7 +46,7 @@
         <MovieGenreCardList @on:select-genre="onCloseModal" />
 
         <div
-          class="grid gap-2 sm:gap-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 overflow-x-auto"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 overflow-x-auto"
         >
           <MovieCardSkeleton v-if="loading" v-for="n in 8" :key="n" />
           <MovieCard
@@ -61,9 +61,9 @@
 
         <p
           v-if="!searchMovie.length"
-          class="text-[var(--theme-text)] text-center py-8"
+          class="text-[var(--theme-text)] bg-[var(--theme-primary)] opacity-50 font-light rounded text-center py-6"
         >
-          No movies found.
+          No data movie.
         </p>
       </div>
     </template>
