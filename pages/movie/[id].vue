@@ -41,7 +41,7 @@
 
     <div>
       <SectionTitle width-line="w-8" title="Casts" />
-      <ScrollContainer>
+      <ScrollContainer v-if="movieDetail.credits?.cast.length">
         <div class="flex space-x-4 overflow-x-auto py-4">
           <div
             v-for="cast in movieDetail.credits?.cast"
@@ -69,11 +69,17 @@
           </div>
         </div>
       </ScrollContainer>
+      <div
+        v-else
+        class="text-center text-sm bg-[var(--theme-primary)] rounded opacity-40 py-4 my-6"
+      >
+        <p class="text-[var(--theme-text)] font-light">No Data Casts</p>
+      </div>
     </div>
 
     <div>
       <SectionTitle width-line="w-20" title="Recommended" />
-      <ScrollContainer>
+      <ScrollContainer v-if="movieDetail.recommendations.results.length">
         <div class="flex space-x-4 overflow-x-auto py-4">
           <MovieCard
             v-for="movie in movieDetail.recommendations.results"
@@ -82,6 +88,12 @@
           />
         </div>
       </ScrollContainer>
+      <div
+        v-else
+        class="text-center text-sm bg-[var(--theme-primary)] rounded opacity-40 py-4 my-6"
+      >
+        <p class="text-[var(--theme-text)] font-light">No Data Movie</p>
+      </div>
     </div>
   </section>
 </template>
