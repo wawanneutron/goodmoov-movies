@@ -14,7 +14,6 @@
     @close="onCloseModal"
   >
     <template #body>
-      <DarkMode />
       <div class="space-y-6 px-2 py-4">
         <form
           class="relative flex items-center w-full"
