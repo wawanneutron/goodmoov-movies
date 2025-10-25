@@ -13,7 +13,7 @@
         class="w-full shrink-0"
       >
         <nuxt-link :to="`/movie/${slide.id}`">
-          <img
+          <NuxtImg
             :src="getImageUrl(slide.backdrop_path, 'w1280')"
             :alt="slide.title"
             :title="slide.title"

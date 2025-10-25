@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  modules: ['@pinia/nuxt', '@nuxt/fonts', 'nuxt-icon'],
+  modules: ['@pinia/nuxt', '@nuxt/fonts', '@nuxt/image', 'nuxt-icon'],
   fonts: {
     families: [{ name: 'Poppins', provider: 'google' }]
   },
