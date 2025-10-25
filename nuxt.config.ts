@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   },
   modules: ['@pinia/nuxt', '@nuxt/fonts', '@nuxt/image', 'nuxt-icon'],
   image: {
-    provider: 'ipx',
+    provider: 'static',
     domains: ['image.tmdb.org']
   },
   fonts: {
