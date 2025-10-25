@@ -2,7 +2,7 @@ export const getImageUrl = (
   path: string | null,
   size: 'w500' | 'w1280' = 'w500'
 ) => {
-  return path ? `https://image.tmdb.org/t/p/${size}${path}` : '/no-image.png'
+  return path ? `https://image.tmdb.org/t/p/${size}${path}` : '/no-image.svg'
 }
 
 export function formatRating(rating: number): string {

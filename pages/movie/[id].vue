@@ -10,12 +10,20 @@
     </button>
 
     <div class="flex gap-4 text-[var(--theme-text)]">
-      <img
-        :src="getImageUrl(movieDetail?.poster_path)"
-        :alt="movieDetail?.title"
-        :title="movieDetail?.title"
-        class="w-48 rounded mb-4"
-      />
+      <div class="w-48">
+        <NuxtImg
+          :src="getImageUrl(movieDetail?.poster_path)"
+          :alt="movieDetail?.title"
+          :title="movieDetail?.title"
+          class="w-48 rounded mb-4"
+          :custom="true"
+          v-slot="{ src, isLoaded, imgAttrs }"
+        >
+          <img v-if="isLoaded" v-bind="imgAttrs" :src="src" />
+
+          <img v-else src="/image-loading.svg" alt="placeholder" />
+        </NuxtImg>
+      </div>
 
       <div class="space-y-2">
         <p class="text-xl">{{ getYear(movieDetail.release_date) }}</p>
@@ -40,12 +48,18 @@
             :key="cast.id"
             class="w-24 flex-shrink-0"
           >
-            <img
+            <NuxtImg
               :src="getImageUrl(cast.profile_path)"
               :alt="cast.name"
               :title="cast.name"
               class="w-24 h-32 object-cover rounded mb-2"
-            />
+              :custom="true"
+              v-slot="{ src, isLoaded, imgAttrs }"
+            >
+              <img v-if="isLoaded" v-bind="imgAttrs" :src="src" />
+
+              <img v-else src="/image-loading.svg" alt="placeholder" />
+            </NuxtImg>
             <p class="text-[var(--theme-text)] text-sm font-semibold truncate">
               {{ cast.name }}
             </p>

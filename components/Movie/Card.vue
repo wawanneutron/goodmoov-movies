@@ -5,12 +5,18 @@
     @click="$emit('on:select-movie')"
   >
     <div class="overflow-hidden rounded relative">
-      <img
+      <NuxtImg
         :src="getImageUrl(movie.poster_path)"
         :alt="movie.title"
         :title="movie.title"
         :class="`${widthCard} h-auto rounded duration-300 ease-in-out hover:scale-110 transition-transform`"
-      />
+        :custom="true"
+        v-slot="{ src, isLoaded, imgAttrs }"
+      >
+        <img v-if="isLoaded" v-bind="imgAttrs" :src="src" />
+
+        <img v-else src="/image-loading.svg" alt="placeholder" />
+      </NuxtImg>
       <span
         class="bg-[var(--theme-transparent)] text-[var(--theme-text)] text-sm absolute bottom-0 right-0 p-2"
         >{{ formatRating(movie.vote_average) }}</span
