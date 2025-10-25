@@ -14,11 +14,15 @@
           <Icon name="heroicons:x-mark" size="20" />
         </button>
 
-        <SectionTitle title="Search Movie" widthLine="w-16" />
+        <SectionTitle :title="title" :width-line="widthLine" />
       </div>
 
       <div className="pt-8">
-        <slot />
+        <slot name="body" />
+      </div>
+
+      <div>
+        <slot name="footer" />
       </div>
     </div>
   </div>
@@ -27,9 +31,18 @@
 <script lang="ts" setup>
 import SectionTitle from './SectionTitle.vue'
 
-defineProps<{
-  maxWidth: string
-}>()
+withDefaults(
+  defineProps<{
+    maxWidth?: string
+    widthLine?: string
+    title: string
+  }>(),
+  {
+    maxWidth: 'max-w-3xl',
+    widthLine: 'w-16',
+    title: 'Modal Titile'
+  }
+)
 
 const isOpenModal = ref<boolean>(false)
 
