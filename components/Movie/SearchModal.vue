@@ -54,7 +54,7 @@
             v-for="movie in searchMovie"
             :key="movie.id"
             :movie="movie"
-            width-card="w-36"
+            width-card="w-36 md:w-44"
             @on:select-movie="onCloseModal"
           />
         </div>
