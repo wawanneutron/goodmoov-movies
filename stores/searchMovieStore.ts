@@ -5,15 +5,22 @@ export const useSearchMovieStore = defineStore('searchMovie', () => {
   const loading = ref<boolean>(false)
   const error = ref<string | null>(null)
 
-  const fetchSearchMovie = async (search: string) => {
+  const currentPage = ref<number>(1)
+  const hasMore = ref<boolean>(true)
+
+  const fetchSearchMovie = async (search: string, page: number = 1) => {
     loading.value = true
 
     try {
-      const res = await useTmdbAPI<Response<Movie>>(
-        `search/movie?query=${search}`
-      )
+      const res = await useTmdbAPI<Response<Movie>>('search/movie', {
+        query: { query: search, page }
+      })
 
-      searchMovie.value = res.results
+      if (page === 1) searchMovie.value = res.results
+      else searchMovie.value.push(...res.results)
+
+      hasMore.value = page < res.total_pages
+      currentPage.value = page
     } catch (err: any) {
       error.value = err.message
       console.error('Error fetching search: ', err.message)
@@ -22,5 +29,16 @@ export const useSearchMovieStore = defineStore('searchMovie', () => {
     }
   }
 
-  return { fetchSearchMovie, searchMovie, loading, error }
+  const loadMoreMovies = async (search: string) => {
+    await fetchSearchMovie(search, currentPage.value + 1)
+  }
+
+  return {
+    fetchSearchMovie,
+    loadMoreMovies,
+    searchMovie,
+    hasMore,
+    loading,
+    error
+  }
 })
