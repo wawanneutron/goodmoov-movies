@@ -46,7 +46,7 @@
           <div
             v-for="cast in movieDetail.credits?.cast"
             :key="cast.id"
-            class="w-24 flex-shrink-0"
+            class="w-24 flex-shrink-0 cursor-pointer"
             @click="onDetailPerson(cast.id)"
           >
             <NuxtImg
