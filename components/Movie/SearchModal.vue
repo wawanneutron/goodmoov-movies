@@ -46,7 +46,7 @@
         <MovieGenreCardList @on:select-genre="onCloseModal" />
 
         <div
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 overflow-x-auto"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 py-2 overflow-x-auto"
         >
           <MovieCardSkeleton v-if="loading" v-for="n in 8" :key="n" />
           <MovieCard
@@ -58,32 +58,34 @@
             @on:select-movie="onCloseModal"
           />
         </div>
+      </div>
+    </template>
 
-        <div v-if="searchMovie.length" class="flex justify-center">
-          <button
-            v-if="!loading && hasMore"
-            @click="loadMore"
-            class="px-6 py-2 bg-[var(--theme-secondary)] text-[var(--theme-text)] rounded-full shadow hover:opacity-80 transition cursor-pointer"
-          >
-            Load More
-          </button>
-
-          <p v-else-if="!hasMore" class="text-[var(--theme-text)] opacity-70">
-            No more movies
-          </p>
-
-          <p v-if="loading" class="text-[var(--theme-text)] animate-pulse">
-            Loading...
-          </p>
-        </div>
-
-        <p
-          v-if="!searchMovie.length"
-          class="text-[var(--theme-text)] bg-[var(--theme-primary)] opacity-50 font-light rounded text-center py-6"
+    <template #footer>
+      <div v-if="searchMovie.length" class="flex justify-center pt-4 pb-8">
+        <button
+          v-if="!loading && hasMore"
+          @click="loadMore"
+          class="px-6 py-2 bg-[var(--theme-secondary)] text-[var(--theme-text)] rounded-full shadow hover:opacity-80 transition cursor-pointer"
         >
-          No data movie.
+          Load More
+        </button>
+
+        <p v-else-if="!hasMore" class="text-[var(--theme-text)] opacity-70">
+          No more movies
+        </p>
+
+        <p v-if="loading" class="text-[var(--theme-text)] animate-pulse">
+          Loading...
         </p>
       </div>
+
+      <p
+        v-if="!searchMovie.length"
+        class="text-[var(--theme-text)] bg-[var(--theme-primary)] opacity-50 font-light rounded text-center py-6 mb-6"
+      >
+        No data movie.
+      </p>
     </template>
   </Modal>
 </template>
