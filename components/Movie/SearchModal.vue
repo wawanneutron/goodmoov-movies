@@ -62,26 +62,15 @@
     </template>
 
     <template #footer>
-      <div v-if="searchMovie.length" class="flex justify-center pt-4 pb-8">
-        <button
-          v-if="!loading && hasMore"
-          @click="loadMore"
-          class="px-6 py-2 bg-[var(--theme-secondary)] text-[var(--theme-text)] rounded-full shadow hover:opacity-80 transition cursor-pointer"
-        >
-          Load More
-        </button>
-
-        <p v-else-if="!hasMore" class="text-[var(--theme-text)] opacity-70">
-          No more movies
-        </p>
-
-        <p v-if="loading" class="text-[var(--theme-text)] animate-pulse">
-          Loading...
-        </p>
-      </div>
+      <MovieLoadMore
+        v-if="searchMovie.length"
+        :hasMore="hasMore"
+        :loading="loading"
+        @on:load-more="loadMore"
+      />
 
       <p
-        v-if="!searchMovie.length"
+        v-else
         class="text-[var(--theme-text)] bg-[var(--theme-primary)] opacity-50 font-light rounded text-center py-6 mb-6"
       >
         No data movie.
