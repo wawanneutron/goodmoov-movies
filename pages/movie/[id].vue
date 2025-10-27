@@ -46,7 +46,8 @@
           <div
             v-for="cast in movieDetail.credits?.cast"
             :key="cast.id"
-            class="w-24 flex-shrink-0"
+            class="w-24 flex-shrink-0 cursor-pointer"
+            @click="onDetailPerson(cast.id)"
           >
             <NuxtImg
               :src="getImageUrl(cast.profile_path)"
@@ -96,9 +97,12 @@
       </div>
     </div>
   </section>
+
+  <MovieDetailCastModal ref="castModal" />
 </template>
 
 <script lang="ts" setup>
+import type CastModal from '~/components/Movie/Detail/CastModal.vue'
 import ScrollContainer from '~/components/ScrollContainer.vue'
 import SectionTitle from '~/components/SectionTitle.vue'
 
@@ -109,12 +113,15 @@ const { movieDetail, loading, error } = storeToRefs(movieDetailStore)
 const route = useRoute()
 const movieId = route.params.id as string
 
+const castModal = ref<InstanceType<typeof CastModal> | null>(null)
+
+const onDetailPerson = (castId: number) => castModal.value?.openModal(castId)
+
 const genreList = computed(() =>
   movieDetail.value?.genres.map((g: any) => g.name).join(', ')
 )
 
 onMounted(() => {
-  console.log('movieId:', movieId)
   if (!movieDetail) return
   fetchMovieDetail(movieId)
 })

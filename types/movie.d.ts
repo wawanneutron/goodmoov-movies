@@ -122,3 +122,13 @@ export interface Response<T> {
   total_results: number
   results: T[]
 }
+
+export interface CastDetail extends Cast {
+  also_known_as: string[]
+  biography: string
+  birthday: string | null
+  deathday: string | null
+  homepage: string | null
+  imdb_id: string | null
+  place_of_birth: string | null
+}
