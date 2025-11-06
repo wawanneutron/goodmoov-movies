@@ -5,7 +5,7 @@ export const useDetailCastStore = defineStore('detailCast', () => {
   const loading = ref<boolean>(false)
   const error = ref<string | null>(null)
 
-  const fetchCastDetail = async (castId: number) => {
+  const fetchCastDetail = async (castId: string) => {
     loading.value = true
 
     try {

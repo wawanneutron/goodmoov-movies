@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-8 animate-pulse">
+  <div class="space-y-8 animate-pulse mb-6">
     <div class="flex flex-col sm:flex-row gap-6 items-start">
       <div
         class="max-w-48 w-48 h-64 rounded-lg bg-[var(--theme-skeleton-bg)] overflow-hidden relative"
@@ -20,8 +20,8 @@
       </div>
     </div>
 
-    <div>
-      <div class="h-5 bg-gray-600/50 rounded w-1/4 mb-2"></div>
+    <div v-if="showBiography">
+      <div class="h-5 bg-gray-600/50 rounded w-1/4"></div>
       <div class="space-y-2">
         <div class="h-4 bg-gray-700/40 rounded w-full"></div>
         <div class="h-4 bg-gray-700/40 rounded w-5/6"></div>
@@ -31,6 +31,10 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const route = useRoute()
+
+const showBiography = computed(() => !route.path.startsWith('/movie'))
+</script>
 
 <style></style>

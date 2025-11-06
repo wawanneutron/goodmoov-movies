@@ -11,7 +11,7 @@
       <MovieCard
         v-else
         v-for="(popular, idx) in popularMovies"
-        :movie="popular"
+        :item="popular"
         :key="idx"
       />
     </ScrollContainer>
