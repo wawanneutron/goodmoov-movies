@@ -1,28 +1,17 @@
 <template>
   <section class="mt-8">
     <div class="flex justify-between items-center py-6">
-      <button
-        class="flex items-center justify-center bg-[var(--theme-primary)] text-[var(--theme-text)] w-12 h-12 rounded-full shadow-md hover:opacity-80 transition-opacity cursor-pointer"
-        @click="$router.back()"
-      >
-        <Icon name="ph:arrow-left-bold" size="24" />
-      </button>
-
+      <BackButton />
       <SectionTitle width-line="8" :title="genreName" />
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 space-y-4">
       <MovieCardSkeleton v-if="loading" v-for="n in movies.length" :key="n" />
-      <MovieCard
-        v-else
-        v-for="movie in movies"
-        :key="movie.id"
-        :movie="movie"
-      />
+      <MovieCard v-else v-for="movie in movies" :item="movie" :key="movie.id" />
     </div>
 
     <MovieLoadMore
-      :hasMore="hasMore"
+      :moreMovies="hasMore"
       :loading="loading"
       @on:load-more="loadMore"
     />
@@ -30,6 +19,8 @@
 </template>
 
 <script lang="ts" setup>
+import BackButton from '~/components/ui/BackButton.vue'
+
 const movieStore = useMovieByGenreStore()
 const { fetchMovieByGenre, loadMoreMovies } = movieStore
 const { movies, loading, error, hasMore } = storeToRefs(movieStore)
@@ -53,6 +44,7 @@ watch(
   ([newGenreId, newGenreName]) => {
     if (typeof newGenreId === 'string' && typeof newGenreName === 'string') {
       fetchMovieByGenre(newGenreId)
+      genreId = newGenreId
       genreName = newGenreName
     }
   }

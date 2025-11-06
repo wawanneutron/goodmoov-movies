@@ -11,7 +11,7 @@
       <MovieCard
         v-else
         v-for="(latest, idx) in latestMovies"
-        :movie="latest"
+        :item="latest"
         :key="idx"
       />
     </ScrollContainer>

@@ -85,7 +85,7 @@
           <MovieCard
             v-for="movie in movieDetail.recommendations.results"
             :key="movie.id"
-            :movie="movie"
+            :item="movie"
           />
         </div>
       </ScrollContainer>
